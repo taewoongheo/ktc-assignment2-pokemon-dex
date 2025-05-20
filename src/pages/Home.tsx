@@ -26,10 +26,12 @@ const Button = styled.button`
 `;
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Title>Pokemon</Title>
-      <Button>포켓몬 도감 시작하기</Button>
+      <Button onClick={() => navigate("/dex")}>포켓몬 도감 시작하기</Button>
     </Container>
   );
 }
