@@ -5,23 +5,37 @@ import PokemonCardBase from "./PokemonCardBase";
 
 const Container = styled.div`
   background-color: rgb(238, 238, 238);
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 1rem;
 `;
 
 const DashboardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 1rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 4rem;
+  }
 `;
 
 const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 `;
 
 const PokeballContainer = styled.div`
@@ -33,6 +47,11 @@ const PokeballContainer = styled.div`
 const PokeballImage = styled.img`
   width: 80px;
   height: 80px;
+
+  @media (max-width: 1024px) {
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 function Pokeball() {

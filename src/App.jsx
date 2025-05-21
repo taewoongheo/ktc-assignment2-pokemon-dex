@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Home from "./pages/Home/Home.jsx";
 import Dex from "./pages/Dex/Dex.jsx";
 import PokemonDetail from "./pages/PokemonDetail/PokemonDetail.jsx";
@@ -9,6 +9,10 @@ export const ResetStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+
+  html {
+    font-size: 16px;
   }
 
   html, body, #root {
@@ -37,8 +41,13 @@ export const ResetStyle = createGlobalStyle`
   }
 `;
 
+const LayoutStyle = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
 function Layout({ children }) {
-  return <div style={{ width: "100%", height: "100%" }}>{children}</div>;
+  return <LayoutStyle>{children}</LayoutStyle>;
 }
 
 export default function App() {

@@ -17,15 +17,14 @@
 ### 도감 페이지 구성
 
 - [x] `Dashboard`, `PokemonList`, `PokemonCard` 컴포넌트 분리
-- [x] `PokemonCard`에 이름, 이미지, 타입, 추가 버튼 포함
+- [ ] `PokemonCard`에 이름, 이미지, 타입, 추가 버튼 포함
 - [x] `추가` 클릭 시 `Dashboard`에 포켓몬 추가
 - [x] `Dashboard`에서 포켓몬 목록과 `삭제` 버튼 구현
 - [x] 포켓몬 선택 최대 6마리로 제한
-  - [x] 초과 시 alert: "포켓몬은 최대 6마리까지만 추가할 수 있습니다."
 
 ### 디테일 페이지 구현
 
-- [x] URL queryString으로 포켓몬 ID를 받아 처리
+- [ ] URL queryString으로 포켓몬 ID를 받아 처리
 - [x] 해당 포켓몬의 이미지, 이름, 타입, 설명 표시
 - [x] "뒤로 가기" 버튼 구현
 
@@ -36,9 +35,9 @@
 
 ### styled-components 스타일링
 
-- [ ] `PokemonCard`, `Dashboard`에 `styled-components` 적용
-- [ ] 카드 및 대시보드에 적절한 여백, 색상, 시각적 일관성 유지
-- [ ] 모바일 및 데스크탑 대응을 고려한 반응형 레이아웃 설계
+- [x] `PokemonCard`, `Dashboard`에 `styled-components` 적용
+- [x] 카드 및 대시보드에 적절한 여백, 색상, 시각적 일관성 유지
+- [x] 모바일 및 데스크탑 대응을 고려한 반응형 레이아웃 설계
 
 ## 도전 기능
 
