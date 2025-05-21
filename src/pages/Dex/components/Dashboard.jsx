@@ -1,13 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  AddButton,
-  PokemonId,
-  PokemonImage,
-  PokemonName,
-  StyledPokemonCard,
-} from "../styles/PokemonCard.styles";
 import pokeball from "../../../assets/pokeball.svg";
+import PokemonCardBase from "./PokemonCardBase";
 
 const Container = styled.div`
   background-color: rgb(238, 238, 238);
@@ -70,14 +64,11 @@ function Dashboard({ selectedPokemon, setSelectedPokemon }) {
         {list.map((pokemon) => {
           if (pokemon) {
             return (
-              <StyledPokemonCard>
-                <PokemonImage src={pokemon.image} alt={pokemon.name} />
-                <PokemonName>{pokemon.name}</PokemonName>
-                <PokemonId>No.{pokemon.id}</PokemonId>
-                <AddButton onClick={() => deletePokemon(pokemon.id)}>
-                  삭제
-                </AddButton>
-              </StyledPokemonCard>
+              <PokemonCardBase
+                pokemon={pokemon}
+                onButtonClick={deletePokemon}
+                buttonLabel={"삭제"}
+              />
             );
           }
           return <Pokeball />;

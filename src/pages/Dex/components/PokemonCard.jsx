@@ -1,15 +1,7 @@
 import React from "react";
-import {
-  AddButton,
-  PokemonId,
-  PokemonImage,
-  PokemonName,
-  StyledPokemonCard,
-} from "../styles/PokemonCard.styles";
+import PokemonCardBase from "./PokemonCardBase";
 
 function PokemonCard({ pokemon, setSelectedPokemon }) {
-  const { id, name, image } = pokemon;
-
   const addPokemon = (id) => {
     setSelectedPokemon((prev) => {
       if (prev.length === 6) {
@@ -27,12 +19,11 @@ function PokemonCard({ pokemon, setSelectedPokemon }) {
   };
 
   return (
-    <StyledPokemonCard>
-      <PokemonImage src={image} alt={name} />
-      <PokemonName>{name}</PokemonName>
-      <PokemonId>No.{id}</PokemonId>
-      <AddButton onClick={() => addPokemon(id)}>추가</AddButton>
-    </StyledPokemonCard>
+    <PokemonCardBase
+      pokemon={pokemon}
+      onButtonClick={addPokemon}
+      buttonLabel={"추가"}
+    />
   );
 }
 
