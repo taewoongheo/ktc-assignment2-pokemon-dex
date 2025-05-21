@@ -48,6 +48,7 @@ function Pokeball() {
     </PokeballContainer>
   );
 }
+
 function Dashboard({ selectedPokemon, setSelectedPokemon }) {
   const list = Array.from({ length: 6 }, () => null);
   for (let i = 0; i < selectedPokemon.length; i++) {
