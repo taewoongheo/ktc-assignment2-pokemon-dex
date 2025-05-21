@@ -32,12 +32,14 @@ const PokemonId = styled.p`
   padding-bottom: 18px;
 `;
 
-const AddButton = styled.button`
+export const Button = styled.button`
   padding: 5px 15px;
   border-radius: 5px;
   border: 1px solid rgb(213, 213, 213);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-size: 16px;
+  background-color: rgb(243, 243, 243);
+  cursor: pointer;
 `;
 
 function PokemonCardBase({ pokemon, onButtonClick, buttonLabel }) {
@@ -46,19 +48,25 @@ function PokemonCardBase({ pokemon, onButtonClick, buttonLabel }) {
   const { id, name, image } = pokemon;
 
   return (
-    <StyledPokemonCard onClick={() => navigate(`/pokemon/${id}`)}>
+    <StyledPokemonCard
+      onClick={() =>
+        navigate(`/pokemon/${id}`, {
+          state: pokemon,
+        })
+      }
+    >
       <PokemonImage src={image} alt={name} />
       <PokemonName>{name}</PokemonName>
       <PokemonId>No.{id}</PokemonId>
       {onButtonClick && (
-        <AddButton
+        <Button
           onClick={(e) => {
             e.stopPropagation();
             onButtonClick(id);
           }}
         >
           {buttonLabel}
-        </AddButton>
+        </Button>
       )}
     </StyledPokemonCard>
   );

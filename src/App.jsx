@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
-import Home from "./pages/Home.jsx";
+import Home from "./pages/Home/Home.jsx";
 import Dex from "./pages/Dex/Dex.jsx";
+import PokemonDetail from "./pages/PokemonDetail/PokemonDetail.jsx";
 
 export const ResetStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -48,6 +49,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dex" element={<Dex />} />
+          <Route path="/pokemon/:id" element={<PokemonDetail />} />
         </Routes>
       </Layout>
     </>
