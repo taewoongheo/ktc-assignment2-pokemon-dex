@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
-import Home from "./pages/Home.tsx";
+import Home from "./pages/Home.jsx";
+import Dex from "./pages/Dex.jsx";
 
 export const ResetStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -34,10 +35,6 @@ export const ResetStyle = createGlobalStyle`
     color: inherit;
   }
 `;
-
-function Dex() {
-  return <h1>Dex Page</h1>;
-}
 
 function Layout({ children }) {
   return <div style={{ width: "100%", height: "100%" }}>{children}</div>;
