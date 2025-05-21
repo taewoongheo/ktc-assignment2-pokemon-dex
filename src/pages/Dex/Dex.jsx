@@ -19,6 +19,7 @@ const PokemonList = styled.div`
 
 function Dex() {
   const [pokemonList, setPokemonList] = useState([]);
+  const [selectedPokemon, setSelectedPokemon] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -33,10 +34,19 @@ function Dex() {
 
   return (
     <Container>
-      <Dashboard />
+      <Dashboard
+        selectedPokemon={selectedPokemon}
+        setSelectedPokemon={setSelectedPokemon}
+      />
       <PokemonList>
         {pokemonList.map((pokemon) => {
-          return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
+          return (
+            <PokemonCard
+              key={pokemon.id}
+              pokemon={pokemon}
+              setSelectedPokemon={setSelectedPokemon}
+            />
+          );
         })}
       </PokemonList>
     </Container>

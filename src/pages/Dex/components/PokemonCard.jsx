@@ -38,7 +38,7 @@ const AddButton = styled.button`
   font-size: 16px;
 `;
 
-function PokemonCard({ pokemon }) {
+function PokemonCard({ pokemon, setSelectedPokemon }) {
   const { id, name, image } = pokemon;
 
   return (
@@ -46,7 +46,11 @@ function PokemonCard({ pokemon }) {
       <PokemonImage src={image} alt={name} />
       <PokemonName>{name}</PokemonName>
       <PokemonId>No.{id}</PokemonId>
-      <AddButton>추가</AddButton>
+      <AddButton
+        onClick={() => setSelectedPokemon((prev) => [...prev, pokemon])}
+      >
+        추가
+      </AddButton>
     </StyledPokemonCard>
   );
 }
