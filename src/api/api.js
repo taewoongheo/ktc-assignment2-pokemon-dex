@@ -20,19 +20,21 @@ export async function getPokemonInfoList() {
 
         return {
           id,
-          name: detail.names.find((el) => el.language.name === "ko").name,
-          description: detail.flavor_text_entries.find(
-            (el) => el.language.name === "ko"
-          ).flavor_text,
+          name:
+            detail.names.find((el) => el.language.name === "ko")?.name ||
+            detail.name,
+          description:
+            detail.flavor_text_entries.find((el) => el.language.name === "ko")
+              ?.flavor_text || detail.flavor_text_entries[0].flavor_text,
           ...typesAndImage,
         };
       })
     );
 
-    return Object.fromEntries(results.map((r) => [r.id, r]));
+    return results;
   } catch (error) {
     console.error(error);
-    return {};
+    return [];
   }
 }
 
@@ -58,12 +60,14 @@ async function getPokemonTypesAndImage(id) {
 
   const englishTypeNames = await Promise.all(types.map((res) => res.json()));
 
-  const koreanTypeNames = englishTypeNames.map((type) =>
-    type.names.find((el) => el.language.name === "ko")
+  const koreanTypeNames = englishTypeNames.map(
+    (type) => type.names.find((el) => el.language.name === "ko")?.name
   );
+
+  console.log(koreanTypeNames);
 
   return {
     image,
-    types: koreanTypeNames,
+    types: koreanTypeNames.length ? koreanTypeNames : englishTypeNames,
   };
 }
