@@ -16,9 +16,8 @@
 
 ### 도감 페이지 구성
 
-- [ ] `Dashboard`, `PokemonList`, `PokemonCard` 컴포넌트 분리
-- [ ] `PokemonList`에서 `MOCK_DATA` 포켓몬 목록을 카드로 렌더링
-- [ ] `PokemonCard`에 이름, 이미지, 타입, 추가 버튼 포함
+- [x] `Dashboard`, `PokemonList`, `PokemonCard` 컴포넌트 분리
+- [x] `PokemonCard`에 이름, 이미지, 타입, 추가 버튼 포함
 - [ ] `추가` 클릭 시 `Dashboard`에 포켓몬 추가
 - [ ] `Dashboard`에서 포켓몬 목록과 `삭제` 버튼 구현
 - [ ] 포켓몬 선택 최대 6마리로 제한

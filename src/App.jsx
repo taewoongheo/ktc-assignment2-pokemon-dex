@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Home from "./pages/Home.jsx";
-import Dex from "./pages/Dex.jsx";
+import Dex from "./pages/Dex/Dex.jsx";
 
 export const ResetStyle = createGlobalStyle`
   *, *::before, *::after {
