@@ -31,7 +31,7 @@ const PokemonName = styled.h1`
   font-weight: 600;
 `;
 
-const PokemonTypes = styled.span`
+const PokemonType = styled.span`
   background-color: rgb(243, 243, 243);
   padding: 0.3rem 0.5rem;
   border-radius: 0.5rem;
@@ -56,7 +56,7 @@ function PokemonDetail({ pokemonList }) {
       <div>
         <span>타입: </span>
         {types.map((el) => (
-          <PokemonTypes key={el}>{el}</PokemonTypes>
+          <PokemonType key={el}>{el}</PokemonType>
         ))}
       </div>
       <PokemonDescription>{description}</PokemonDescription>

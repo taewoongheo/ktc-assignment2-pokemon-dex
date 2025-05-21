@@ -4,7 +4,7 @@
 
 ### Git 브랜치 전략
 
-- [ ] `prop-drilling` 브랜치를 생성하여 props만으로 상태 전달 구현
+- [x] `prop-drilling` 브랜치를 생성하여 props만으로 상태 전달 구현
 - [ ] `context` 브랜치를 새로 만들어 Context API를 활용해 상태 전역 관리 구현
 
 ### 페이지 라우팅 구현
@@ -17,7 +17,7 @@
 ### 도감 페이지 구성
 
 - [x] `Dashboard`, `PokemonList`, `PokemonCard` 컴포넌트 분리
-- [ ] `PokemonCard`에 이름, 이미지, 타입, 추가 버튼 포함
+- [x] `PokemonCard`에 이름, 이미지, 타입, 추가 버튼 포함
 - [x] `추가` 클릭 시 `Dashboard`에 포켓몬 추가
 - [x] `Dashboard`에서 포켓몬 목록과 `삭제` 버튼 구현
 - [x] 포켓몬 선택 최대 6마리로 제한

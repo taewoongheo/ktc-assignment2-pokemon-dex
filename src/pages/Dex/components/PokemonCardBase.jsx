@@ -38,16 +38,37 @@ const PokemonId = styled.p`
   padding-bottom: 1rem;
 `;
 
+const PokemonTypeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1rem;
+`;
+
+const PokemonType = styled.span`
+  background-color: rgb(243, 243, 243);
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+`;
+
 function PokemonCardBase({ pokemon, onButtonClick, buttonLabel }) {
   const navigate = useNavigate();
 
-  const { id, name, image } = pokemon;
+  const { id, name, image, types } = pokemon;
 
   return (
     <StyledPokemonCard onClick={() => navigate(`/pokemon/${id}`)}>
       <PokemonImage src={image} alt={name} />
       <PokemonName>{name}</PokemonName>
       <PokemonId>No.{id}</PokemonId>
+      <PokemonTypeContainer>
+        <span>타입: </span>
+        {types.map((el) => (
+          <PokemonType key={el}>{el}</PokemonType>
+        ))}
+      </PokemonTypeContainer>
       {onButtonClick && (
         <Button
           onClick={(e) => {
