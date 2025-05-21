@@ -3,6 +3,8 @@ import styled, { createGlobalStyle } from "styled-components";
 import Home from "./pages/Home/Home.jsx";
 import Dex from "./pages/Dex/Dex.jsx";
 import PokemonDetail from "./pages/PokemonDetail/PokemonDetail.jsx";
+import { useEffect, useState } from "react";
+import { getPokemonInfoList } from "./api/api.js";
 
 export const ResetStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -51,14 +53,43 @@ function Layout({ children }) {
 }
 
 export default function App() {
+  const [pokemonList, setPokemonList] = useState([]);
+  const [selectedPokemon, setSelectedPokemon] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await getPokemonInfoList();
+        setPokemonList(response);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+
   return (
     <>
       <ResetStyle />
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dex" element={<Dex />} />
-          <Route path="/pokemon/:id" element={<PokemonDetail />} />
+          <Route
+            path="/"
+            element={<Home setSelectedPokemon={setSelectedPokemon} />}
+          />
+          <Route
+            path="/dex"
+            element={
+              <Dex
+                pokemonList={pokemonList}
+                selectedPokemon={selectedPokemon}
+                setSelectedPokemon={setSelectedPokemon}
+              />
+            }
+          />
+          <Route
+            path="/pokemon/:id"
+            element={<PokemonDetail pokemonList={pokemonList} />}
+          />
         </Routes>
       </Layout>
     </>

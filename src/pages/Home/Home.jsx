@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../../components/Button";
@@ -17,8 +17,12 @@ const Title = styled.h1`
   font-weight: 600;
 `;
 
-function Home() {
+function Home({ setSelectedPokemon }) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setSelectedPokemon([]);
+  }, []);
 
   return (
     <Container>

@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../components/Button";
 import styled from "styled-components";
 
@@ -43,10 +43,11 @@ const PokemonDescription = styled.p`
   font-weight: 400;
 `;
 
-function PokemonDetail() {
+function PokemonDetail({ pokemonList }) {
   const navigate = useNavigate();
-  const { state } = useLocation();
-  const { name, image, types, description } = state;
+  const { id } = useParams();
+  const pokemon = pokemonList.find((pokemon) => pokemon.id === id);
+  const { name, image, types, description } = pokemon;
 
   return (
     <Container>

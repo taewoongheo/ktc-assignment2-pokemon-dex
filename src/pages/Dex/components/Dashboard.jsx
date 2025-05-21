@@ -80,10 +80,11 @@ function Dashboard({ selectedPokemon, setSelectedPokemon }) {
         <h1>나만의 포켓몬</h1>
       </TitleContainer>
       <DashboardGrid>
-        {list.map((pokemon) => {
+        {list.map((pokemon, i) => {
           if (pokemon) {
             return (
               <PokemonCardBase
+                key={`${pokemon.id}-${i}`}
                 pokemon={pokemon}
                 onButtonClick={deletePokemon}
                 buttonLabel={"삭제"}

@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getPokemonInfoList } from "../../api/api";
 import PokemonCard from "./components/PokemonCard";
 import Dashboard from "./components/Dashboard";
 
@@ -30,21 +28,7 @@ const PokemonList = styled.div`
   }
 `;
 
-function Dex() {
-  const [pokemonList, setPokemonList] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await getPokemonInfoList();
-        setPokemonList(response);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
-
+function Dex({ pokemonList, selectedPokemon, setSelectedPokemon }) {
   return (
     <Container>
       <Dashboard

@@ -44,13 +44,7 @@ function PokemonCardBase({ pokemon, onButtonClick, buttonLabel }) {
   const { id, name, image } = pokemon;
 
   return (
-    <StyledPokemonCard
-      onClick={() =>
-        navigate(`/pokemon/${id}`, {
-          state: pokemon,
-        })
-      }
-    >
+    <StyledPokemonCard onClick={() => navigate(`/pokemon/${id}`)}>
       <PokemonImage src={image} alt={name} />
       <PokemonName>{name}</PokemonName>
       <PokemonId>No.{id}</PokemonId>
