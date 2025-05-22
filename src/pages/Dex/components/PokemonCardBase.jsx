@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Button } from "../../../components/Button";
+import { AddButton, DeleteButton } from "../../../components/Button";
 
 const StyledPokemonCard = styled.div`
   padding: 1rem;
@@ -69,15 +69,24 @@ function PokemonCardBase({ pokemon, onButtonClick, buttonLabel }) {
           <PokemonType key={el}>{el}</PokemonType>
         ))}
       </PokemonTypeContainer>
-      {onButtonClick && (
-        <Button
+      {buttonLabel === "추가" ? (
+        <AddButton
           onClick={(e) => {
             e.stopPropagation();
             onButtonClick(id);
           }}
         >
-          {buttonLabel}
-        </Button>
+          추가
+        </AddButton>
+      ) : (
+        <DeleteButton
+          onClick={(e) => {
+            e.stopPropagation();
+            onButtonClick(id);
+          }}
+        >
+          삭제
+        </DeleteButton>
       )}
     </StyledPokemonCard>
   );

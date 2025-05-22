@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Button } from "../../components/Button";
+import { AddButton, DeleteButton, Button } from "../../components/Button";
 import styled from "styled-components";
 import { usePokemon } from "../../contexts/PokemonContext";
 import { useDashboard } from "../../contexts/DashboardContext";
@@ -68,7 +68,7 @@ function PokemonDetail() {
       <PokemonDescription>{description}</PokemonDescription>
       <Button onClick={() => navigate(-1)}>뒤로가기</Button>
       {selectedPokemon.find((el) => el.id === id) ? (
-        <Button
+        <DeleteButton
           onClick={() =>
             setSelectedPokemon([
               ...selectedPokemon.filter((pokemon) => pokemon.id !== id),
@@ -76,13 +76,13 @@ function PokemonDetail() {
           }
         >
           나만의 포켓몬 삭제
-        </Button>
+        </DeleteButton>
       ) : (
-        <Button
+        <AddButton
           onClick={() => setSelectedPokemon([...selectedPokemon, pokemon])}
         >
           나만의 포켓몬 추가
-        </Button>
+        </AddButton>
       )}
     </Container>
   );
