@@ -61,6 +61,5 @@
 
 ### UI 라이브러리로 알림 개선
 
-- [ ] alert 대신 Modal 또는 toast로 알림 제공
-- [ ] `react-toastify`, `sweetalert2`, `sonner` 중 하나 이상 사용
-- [ ] 사용자 경험이 향상되는 UI 알림 구현
+- [x] alert 대신 Modal 또는 toast로 알림 제공
+- [x] `react-toastify`, `sweetalert2`, `sonner` 중 하나 이상 사용
