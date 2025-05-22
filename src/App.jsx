@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home.jsx";
 import Dex from "./pages/Dex/Dex.jsx";
 import PokemonDetail from "./pages/PokemonDetail/PokemonDetail.jsx";
 import { PokemonProvider } from "./contexts/PokemonContext.jsx";
-import { useState } from "react";
+import { DashboardProvider } from "./contexts/DashboardContext.jsx";
 
 export const ResetStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -53,29 +53,18 @@ function Layout({ children }) {
 }
 
 export default function App() {
-  const [selectedPokemon, setSelectedPokemon] = useState([]);
-
   return (
     <PokemonProvider>
-      <ResetStyle />
-      <Layout>
-        <Routes>
-          <Route
-            path="/"
-            element={<Home setSelectedPokemon={setSelectedPokemon} />}
-          />
-          <Route
-            path="/dex"
-            element={
-              <Dex
-                selectedPokemon={selectedPokemon}
-                setSelectedPokemon={setSelectedPokemon}
-              />
-            }
-          />
-          <Route path="/pokemon/:id" element={<PokemonDetail />} />
-        </Routes>
-      </Layout>
+      <DashboardProvider>
+        <ResetStyle />
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dex" element={<Dex />} />
+            <Route path="/pokemon/:id" element={<PokemonDetail />} />
+          </Routes>
+        </Layout>
+      </DashboardProvider>
     </PokemonProvider>
   );
 }

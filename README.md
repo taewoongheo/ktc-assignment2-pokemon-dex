@@ -5,7 +5,7 @@
 ### Git 브랜치 전략
 
 - [x] `prop-drilling` 브랜치를 생성하여 props만으로 상태 전달 구현
-- [ ] `context` 브랜치를 새로 만들어 Context API를 활용해 상태 전역 관리 구현
+- [x] `context` 브랜치를 새로 만들어 Context API를 활용해 상태 전역 관리 구현
 
 ### 페이지 라우팅 구현
 

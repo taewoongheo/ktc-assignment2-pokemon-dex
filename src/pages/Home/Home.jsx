@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../../components/Button";
+import { useDashboard } from "../../contexts/DashboardContext";
 
 const Container = styled.div`
   display: flex;
@@ -17,8 +18,9 @@ const Title = styled.h1`
   font-weight: 600;
 `;
 
-function Home({ setSelectedPokemon }) {
+function Home() {
   const navigate = useNavigate();
+  const { setSelectedPokemon } = useDashboard();
 
   useEffect(() => {
     setSelectedPokemon([]);
