@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { usePokemon } from "../../contexts/PokemonContext";
 import { useDashboard } from "../../contexts/DashboardContext";
 import Swal from "sweetalert2";
+import { exceedsPokemonSelectionValidator } from "../../validation/addPokemonValidator";
 
 const Container = styled.div`
   display: flex;
@@ -82,7 +83,7 @@ function PokemonDetail() {
         <AddButton
           onClick={() => {
             setSelectedPokemon((prev) => {
-              if (prev.length >= 6) {
+              if (exceedsPokemonSelectionValidator(prev)) {
                 Swal.fire({
                   title: "선택 불가",
                   text: "더 이상 선택할 수 없습니다.",
