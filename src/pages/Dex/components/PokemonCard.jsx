@@ -1,16 +1,25 @@
 import React from "react";
 import PokemonCardBase from "./PokemonCardBase";
+import Swal from "sweetalert2";
 
 function PokemonCard({ pokemon, setSelectedPokemon }) {
   const addPokemon = (id) => {
     setSelectedPokemon((prev) => {
       if (prev.length === 6) {
-        alert("더 이상 선택할 수 없습니다.");
+        Swal.fire({
+          title: "선택 불가",
+          text: "더 이상 선택할 수 없습니다.",
+          icon: "error",
+        });
         return prev;
       }
 
       if (prev.find((pokemon) => pokemon.id === id)) {
-        alert("이미 선택된 포켓몬입니다.");
+        Swal.fire({
+          title: "선택 불가",
+          text: "이미 선택된 포켓몬입니다.",
+          icon: "warning",
+        });
         return prev;
       } else {
         return [...prev, pokemon];
