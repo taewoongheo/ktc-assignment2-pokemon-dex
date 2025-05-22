@@ -3,6 +3,7 @@ import { AddButton, DeleteButton, Button } from "../../components/Button";
 import styled from "styled-components";
 import { usePokemon } from "../../contexts/PokemonContext";
 import { useDashboard } from "../../contexts/DashboardContext";
+import Swal from "sweetalert2";
 
 const Container = styled.div`
   display: flex;
@@ -79,7 +80,21 @@ function PokemonDetail() {
         </DeleteButton>
       ) : (
         <AddButton
-          onClick={() => setSelectedPokemon([...selectedPokemon, pokemon])}
+          onClick={() => {
+            setSelectedPokemon((prev) => {
+              if (prev.length >= 6) {
+                Swal.fire({
+                  title: "선택 불가",
+                  text: "더 이상 선택할 수 없습니다.",
+                  icon: "error",
+                  confirmButtonText: "확인",
+                });
+                return prev;
+              }
+
+              return [...prev, pokemon];
+            });
+          }}
         >
           나만의 포켓몬 추가
         </AddButton>
