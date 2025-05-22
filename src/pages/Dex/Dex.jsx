@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import PokemonCard from "./components/PokemonCard";
 import Dashboard from "./components/Dashboard";
+import { usePokemon } from "../../contexts/PokemonContext";
 
 const Container = styled.div`
   width: 100%;
@@ -28,7 +29,9 @@ const PokemonList = styled.div`
   }
 `;
 
-function Dex({ pokemonList, selectedPokemon, setSelectedPokemon }) {
+function Dex({ selectedPokemon, setSelectedPokemon }) {
+  const { pokemonList } = usePokemon();
+
   return (
     <Container>
       <Dashboard
