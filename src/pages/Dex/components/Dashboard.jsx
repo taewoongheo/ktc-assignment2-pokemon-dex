@@ -91,7 +91,7 @@ function Dashboard({ selectedPokemon, setSelectedPokemon }) {
               />
             );
           }
-          return <Pokeball />;
+          return <Pokeball key={i} />;
         })}
       </DashboardGrid>
     </Container>

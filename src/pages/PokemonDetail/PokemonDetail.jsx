@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../components/Button";
 import styled from "styled-components";
 import { usePokemon } from "../../contexts/PokemonContext";
+import { useDashboard } from "../../contexts/DashboardContext";
 
 const Container = styled.div`
   display: flex;
@@ -48,8 +49,11 @@ function PokemonDetail() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { pokemonList } = usePokemon();
+  const { selectedPokemon, setSelectedPokemon } = useDashboard();
   const pokemon = pokemonList.find((pokemon) => pokemon.id === id);
   const { name, image, types, description } = pokemon;
+
+  console.log(selectedPokemon);
 
   return (
     <Container>
@@ -63,6 +67,23 @@ function PokemonDetail() {
       </div>
       <PokemonDescription>{description}</PokemonDescription>
       <Button onClick={() => navigate(-1)}>뒤로가기</Button>
+      {selectedPokemon.find((el) => el.id === id) ? (
+        <Button
+          onClick={() =>
+            setSelectedPokemon([
+              ...selectedPokemon.filter((pokemon) => pokemon.id !== id),
+            ])
+          }
+        >
+          나만의 포켓몬 삭제
+        </Button>
+      ) : (
+        <Button
+          onClick={() => setSelectedPokemon([...selectedPokemon, pokemon])}
+        >
+          나만의 포켓몬 추가
+        </Button>
+      )}
     </Container>
   );
 }

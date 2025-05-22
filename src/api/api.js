@@ -64,8 +64,6 @@ async function getPokemonTypesAndImage(id) {
     (type) => type.names.find((el) => el.language.name === "ko")?.name
   );
 
-  console.log(koreanTypeNames);
-
   return {
     image,
     types: koreanTypeNames.length ? koreanTypeNames : englishTypeNames,
