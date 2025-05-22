@@ -5,27 +5,21 @@ import {
   exceedsPokemonSelectionValidator,
   alreadySelectedPokemonValidator,
 } from "../../../validation/addPokemonValidator";
+import {
+  exceedsPokemonSelectionAlert,
+  alreadySelectedPokemonAlert,
+} from "../../../alerts/alerts";
 
 function PokemonCard({ pokemon, setSelectedPokemon }) {
   const addPokemon = (id) => {
     setSelectedPokemon((prev) => {
       if (exceedsPokemonSelectionValidator(prev)) {
-        Swal.fire({
-          title: "선택 불가",
-          text: "더 이상 선택할 수 없습니다.",
-          icon: "error",
-          confirmButtonText: "확인",
-        });
+        exceedsPokemonSelectionAlert();
         return prev;
       }
 
       if (alreadySelectedPokemonValidator(prev, id)) {
-        Swal.fire({
-          title: "선택 불가",
-          text: "이미 선택된 포켓몬입니다.",
-          icon: "warning",
-          confirmButtonText: "확인",
-        });
+        alreadySelectedPokemonAlert();
         return prev;
       }
 

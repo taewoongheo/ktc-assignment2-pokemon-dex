@@ -3,7 +3,7 @@ import { AddButton, DeleteButton, Button } from "../../components/Button";
 import styled from "styled-components";
 import { usePokemon } from "../../contexts/PokemonContext";
 import { useDashboard } from "../../contexts/DashboardContext";
-import Swal from "sweetalert2";
+import { exceedsPokemonSelectionAlert } from "../../alerts/alerts";
 import { exceedsPokemonSelectionValidator } from "../../validation/addPokemonValidator";
 
 const Container = styled.div`
@@ -84,12 +84,7 @@ function PokemonDetail() {
           onClick={() => {
             setSelectedPokemon((prev) => {
               if (exceedsPokemonSelectionValidator(prev)) {
-                Swal.fire({
-                  title: "선택 불가",
-                  text: "더 이상 선택할 수 없습니다.",
-                  icon: "error",
-                  confirmButtonText: "확인",
-                });
+                exceedsPokemonSelectionAlert();
                 return prev;
               }
 
