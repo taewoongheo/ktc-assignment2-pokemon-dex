@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useDashboard } from "../../contexts/DashboardContext";
+// import { useDashboard } from "../../contexts/DashboardContext";
 import { Button } from "../../components/Button";
 
 const Container = styled.div`
@@ -20,11 +20,13 @@ const Title = styled.h1`
 
 function Home() {
   const navigate = useNavigate();
-  const { setSelectedPokemon } = useDashboard();
 
-  useEffect(() => {
-    setSelectedPokemon([]);
-  }, []);
+  // context api 기반 포켓몬 선택 상태 관리 -> redux toolkit 기반으로 대체
+  // const { setSelectedPokemon } = useDashboard();
+
+  // useEffect(() => {
+  //   setSelectedPokemon([]);
+  // }, []);
 
   return (
     <Container>

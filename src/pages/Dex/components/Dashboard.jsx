@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import pokeball from "../../../assets/pokeball.svg";
 import PokemonCardBase from "./PokemonCardBase";
+import { useDispatch, useSelector } from "react-redux";
+import { deletePokemon } from "../../../redux/selectedPokemon";
 
 const Container = styled.div`
   background-color: rgb(238, 238, 238);
@@ -62,16 +64,19 @@ function Pokeball() {
   );
 }
 
-function Dashboard({ selectedPokemon, setSelectedPokemon }) {
+function Dashboard() {
+  const dispatch = useDispatch();
+
+  const selectedPokemon = useSelector(
+    (state) => state.selectedPokemon.selectedPokemon
+  );
   const list = Array.from({ length: 6 }, () => null);
   for (let i = 0; i < selectedPokemon.length; i++) {
     list[i] = selectedPokemon[i];
   }
 
-  const deletePokemon = (id) => {
-    setSelectedPokemon([
-      ...selectedPokemon.filter((pokemon) => pokemon.id !== id),
-    ]);
+  const handleDeletePokemon = (id) => {
+    dispatch(deletePokemon(id));
   };
 
   return (
@@ -86,7 +91,7 @@ function Dashboard({ selectedPokemon, setSelectedPokemon }) {
               <PokemonCardBase
                 key={`${pokemon.id}-${i}`}
                 pokemon={pokemon}
-                onButtonClick={deletePokemon}
+                onButtonClick={handleDeletePokemon}
                 buttonLabel={"삭제"}
               />
             );

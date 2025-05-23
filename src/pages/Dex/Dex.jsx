@@ -2,7 +2,8 @@ import styled from "styled-components";
 import PokemonCard from "./components/PokemonCard";
 import Dashboard from "./components/Dashboard";
 import { usePokemon } from "../../contexts/PokemonContext";
-import { useDashboard } from "../../contexts/DashboardContext";
+// import { useDashboard } from "../../contexts/DashboardContext";
+
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -31,13 +32,15 @@ const PokemonList = styled.div`
 
 function Dex() {
   const { pokemonList } = usePokemon();
-  const { selectedPokemon, setSelectedPokemon } = useDashboard();
+
+  // context api 기반 포켓몬 선택 상태 관리 -> redux toolkit 기반으로 대체
+  // const { selectedPokemon, setSelectedPokemon } = useDashboard();
 
   return (
     <Container>
       <Dashboard
-        selectedPokemon={selectedPokemon}
-        setSelectedPokemon={setSelectedPokemon}
+      // selectedPokemon={selectedPokemon}
+      // setSelectedPokemon={setSelectedPokemon}
       />
       <PokemonList>
         {pokemonList.map((pokemon) => {
@@ -45,7 +48,7 @@ function Dex() {
             <PokemonCard
               key={pokemon.id}
               pokemon={pokemon}
-              setSelectedPokemon={setSelectedPokemon}
+              // setSelectedPokemon={setSelectedPokemon}
             />
           );
         })}

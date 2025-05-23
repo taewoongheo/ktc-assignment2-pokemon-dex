@@ -9,28 +9,33 @@ import {
   exceedsPokemonSelectionAlert,
   alreadySelectedPokemonAlert,
 } from "../../../alerts/alerts";
+import { useDispatch, useSelector } from "react-redux";
+import { addPokemon } from "../../../redux/selectedPokemon";
 
-function PokemonCard({ pokemon, setSelectedPokemon }) {
-  const addPokemon = (id) => {
-    setSelectedPokemon((prev) => {
-      if (exceedsPokemonSelectionValidator(prev)) {
-        exceedsPokemonSelectionAlert();
-        return prev;
-      }
+function PokemonCard({ pokemon }) {
+  const dispatch = useDispatch();
+  const selectedPokemon = useSelector(
+    (state) => state.selectedPokemon.selectedPokemon
+  );
 
-      if (alreadySelectedPokemonValidator(prev, id)) {
-        alreadySelectedPokemonAlert();
-        return prev;
-      }
+  const handleAddPokemon = (id) => {
+    if (exceedsPokemonSelectionValidator(selectedPokemon)) {
+      exceedsPokemonSelectionAlert();
+      return;
+    }
 
-      return [...prev, pokemon];
-    });
+    if (alreadySelectedPokemonValidator(selectedPokemon, id)) {
+      alreadySelectedPokemonAlert();
+      return;
+    }
+
+    dispatch(addPokemon(pokemon));
   };
 
   return (
     <PokemonCardBase
       pokemon={pokemon}
-      onButtonClick={addPokemon}
+      onButtonClick={handleAddPokemon}
       buttonLabel={"추가"}
     />
   );

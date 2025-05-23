@@ -4,7 +4,9 @@ import Home from "./pages/Home/Home.jsx";
 import Dex from "./pages/Dex/Dex.jsx";
 import PokemonDetail from "./pages/PokemonDetail/PokemonDetail.jsx";
 import { PokemonProvider } from "./contexts/PokemonContext.jsx";
-import { DashboardProvider } from "./contexts/DashboardContext.jsx";
+import store from "./redux/store.js";
+import { Provider } from "react-redux";
+// import Dashboard from "./pages/Dex/components/Dashboard.jsx";
 
 export const ResetStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -55,7 +57,8 @@ function Layout({ children }) {
 export default function App() {
   return (
     <PokemonProvider>
-      <DashboardProvider>
+      {/* <DashboardProvider> */}
+      <Provider store={store}>
         <ResetStyle />
         <Layout>
           <Routes>
@@ -64,7 +67,8 @@ export default function App() {
             <Route path="/pokemon/:id" element={<PokemonDetail />} />
           </Routes>
         </Layout>
-      </DashboardProvider>
+      </Provider>
+      {/* </DashboardProvider> */}
     </PokemonProvider>
   );
 }
