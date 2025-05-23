@@ -43,8 +43,8 @@
 
 ### Redux Toolkit으로 상태 리팩터링
 
-- [ ] `redux-toolkits` 브랜치 생성
-- [ ] Redux Toolkit 설치 및 store 구성
+- [x] `redux-toolkits` 브랜치 생성
+- [x] Redux Toolkit 설치 및 store 구성
 - [ ] 선택 상태를 Redux state로 관리
 - [ ] `useSelector`, `useDispatch`를 통해 상태 조회 및 변경 구현
 - [ ] 기존 Context 기반 구조를 Redux로 대체
