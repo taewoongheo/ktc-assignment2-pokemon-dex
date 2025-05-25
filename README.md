@@ -1,5 +1,7 @@
 # Pokemon Dex
 
+https://ktc-assignment2-pokemon-dex.vercel.app/
+
 ## 필수 기능
 
 ### Git 브랜치 전략
